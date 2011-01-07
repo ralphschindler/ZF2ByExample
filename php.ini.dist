@@ -1,0 +1,5 @@
+include_path = ".:/path/to/ZF2/library"
+auto_prepend_file = "/path/to/this/bootstrap.php"
+error_reporting = 32767
+display_errors = on
+display_startup_errors = on
