@@ -1,9 +1,7 @@
 <?php
 
 function _main_() {
-    global $autoloader;
-    
-    $autoloader->registerNamespace('My', __DIR__ . '/My/');
+    simple_autoloader_register('My', __DIR__);
     
     $configValues = new Zend\Config\Ini(__DIR__ . '/di-config.ini', 'production');
     $diConfig = new Zend\Di\Configuration($configValues->di);

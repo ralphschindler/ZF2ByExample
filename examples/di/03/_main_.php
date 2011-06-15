@@ -1,9 +1,7 @@
 <?php
 
 function _main_() {
-    global $autoloader;
-    
-    $autoloader->registerNamespace('My', __DIR__ . '/My/');
+    simple_autoloader_register('My', __DIR__, true);
     
     if (!class_exists('My\DiDefinition', true)) {
         echo 'COMPILING DEFINITION (and writing to disk at My\DiDefinition.php)' . PHP_EOL;
@@ -21,7 +19,7 @@ function _main_() {
         ));
         file_put_contents(__DIR__ . '/My/DiDefinition.php', $codeGenerator->generate());
     
-        unset($compiler, $definition, $codeGenerator, $class, $method);
+        unset($compiler, $definition, $codeGenerator, $class);
     } else {
         echo 'USING DEFINITION' . PHP_EOL;
     }

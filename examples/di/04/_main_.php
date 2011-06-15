@@ -2,8 +2,7 @@
 
 
 function _main_() {
-    global $autoloader;
-    $autoloader->registerNamespace('My', __DIR__ . '/My/');
+    simple_autoloader_register('My', __DIR__);
     
     $compiler = new Zend\Di\Definition\Compiler();
     $compiler->addCodeScannerDirectory(new Zend\Code\Scanner\DirectoryScanner(__DIR__ . '/My/'));

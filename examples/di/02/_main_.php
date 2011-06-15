@@ -1,8 +1,7 @@
 <?php
 
 function _main_() {
-    global $autoloader;
-    $autoloader->registerNamespace('My', __DIR__ . '/My/');
+    simple_autoloader_register('My', __DIR__);
     
     if (!file_exists(__DIR__ . '/di-definition.php')) {
         echo 'COMPILING DEFINITION (run again to delete di-definition.php)' . PHP_EOL;
