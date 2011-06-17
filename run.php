@@ -12,13 +12,15 @@ simple_autoloader_register('Zend', ZF_PATH);
 
 $exampleToRun = $_SERVER['argv'][1];
 
-if (strpos($exampleToRun, '_main_.php') === false) {
+if (strpos($exampleToRun, '.php') === false) {
     $exampleToRun = rtrim($exampleToRun, '\\/') . DIRECTORY_SEPARATOR . '_main_.php';
 }
 
 include __DIR__ . DIRECTORY_SEPARATOR . ltrim($exampleToRun, '\\/');
 
-_main_();
+if (strpos($exampleToRun, '_main_.php') !== false) {
+    _main_();
+}
 
 
 
