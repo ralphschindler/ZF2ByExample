@@ -1,24 +1,26 @@
 <?php
 
-// Defint the ZF2 Path
-define('ZF_PATH', realpath(__DIR__ . '/../ZFGit/library/'));
+$config = (file_exists(__DIR__ . '/config.php')) ? __DIR__ . '/config.php' : __DIR__ . '/config.dist.php';
+include $config;
 
 // error_reporting & display_errors
 error_reporting(32767);
 ini_set('display_errors', 1);
 
 // bootstrap
-simple_autoloader_register('Zend', ZF_PATH);
+simple_autoloader_register('Zend', ZF2_PATH);
 
 $exampleToRun = $_SERVER['argv'][1];
 
-if (strpos($exampleToRun, '_main_.php') === false) {
+if (strpos($exampleToRun, '.php') === false) {
     $exampleToRun = rtrim($exampleToRun, '\\/') . DIRECTORY_SEPARATOR . '_main_.php';
 }
 
 include __DIR__ . DIRECTORY_SEPARATOR . ltrim($exampleToRun, '\\/');
 
-_main_();
+if (strpos($exampleToRun, '_main_.php') !== false) {
+    _main_();
+}
 
 
 
