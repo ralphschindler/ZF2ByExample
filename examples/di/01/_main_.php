@@ -39,8 +39,13 @@ namespace {
 
     function _main_() {
         $di = new Zend\Di\DependencyInjector();
-        $di->getInstanceManager()->setProperty('My\A', 'username', 'foo');
-        $di->getInstanceManager()->setProperty('My\A', 'password', 'bar');
+        $di->getInstanceManager()->setParameters(
+            'My\A',
+            array(
+                'username' => 'foo',
+                'password' => 'bar',
+            )
+        );
         $c = $di->get('My\C');
         echo $c;
         $d = $di->get('My\C');
