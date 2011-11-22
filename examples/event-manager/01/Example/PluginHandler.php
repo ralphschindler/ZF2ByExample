@@ -17,13 +17,13 @@ class PluginHandler
     public function register($plugin)
     {
         if (method_exists($plugin, 'onInit')) {
-            $this->eventManager->attach('init', $plugin, 'onInit');
+            $this->eventManager->attach('init', array($plugin, 'onInit'));
         }
         if (method_exists($plugin, 'onPreDispatch')) {
-            $this->eventManager->attach('preDispatch', $plugin, 'onPreDispatch');
+            $this->eventManager->attach('preDispatch', array($plugin, 'onPreDispatch'));
         }
         if (method_exists($plugin, 'onPostDispatch')) {
-            $this->eventManager->attach('postDispatch', $plugin, 'onPostDispatch');
+            $this->eventManager->attach('postDispatch', array($plugin, 'onPostDispatch'));
         }
         
     }

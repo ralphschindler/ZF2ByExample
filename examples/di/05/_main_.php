@@ -3,17 +3,17 @@
 function _main_() {
     simple_autoloader_register('My', __DIR__);
     
-    $di = new Zend\Di\DependencyInjector();
-    $im = $di->getInstanceManager();
+    $di = new Zend\Di\Di();
+    $im = $di->instanceManager();
     
     $im->addAlias('my-repository', 'My\RepositoryA');
     $im->addAlias('my-mapper', 'My\Mapper');
     $im->addAlias('my-dbAdapter', 'My\DbAdapter');
     
-    $im->setProperties('My\DbAdapter', array('username' => 'readonlyuser', 'password' => 'bar'));
+    $im->setParameters('My\DbAdapter', array('username' => 'readonlyuser', 'password' => 'bar'));
     
-    $im->addPreferredInstance('my-repository', 'my-mapper');
-    $im->addPreferredInstance('my-mapper', 'my-dbAdapter');
+    $im->addTypePreference('my-repository', 'my-mapper');
+    $im->addTypePreference('my-mapper', 'my-dbAdapter');
     
     // another alias
     $im->addAlias('my-rwDbAdapter', 'My\DbAdapter', array('username' => 'readwriteuser'));

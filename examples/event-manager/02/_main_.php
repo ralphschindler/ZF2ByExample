@@ -1,15 +1,11 @@
 <?php
 
-namespace ZF2ByExample\SignalSlot\Ex02;
-
 function _main_() {
-
-    $ph = new PluginHandler();
-    $ph->register(new MyPlugin());
+	simple_autoloader_register('Example', __DIR__);
+	
+    $ph = new Example\PluginHandler();
+    $ph->register(new Example\MyPlugin());
     
-    $sd = new Dispatcher($ph);
+    $sd = new Example\Dispatcher($ph);
     $sd->dispatch();
-
 }
-
-_main_();
