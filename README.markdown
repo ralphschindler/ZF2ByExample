@@ -1,7 +1,7 @@
 ZF2 By Example
 ==============
 
-Alter run.php to point to your checkout of ZF2.
+Create your config.php (copy of config.dist.php) to point to your checkout of ZF2.
 
 
 To Run:

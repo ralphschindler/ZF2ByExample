@@ -18,8 +18,13 @@ function _main_() {
     
     $di = new Zend\Di\DependencyInjector;
     $di->setDefinition($definition);
-    $di->getInstanceManager()->setProperty('My\DbAdapter', 'username', 'foo');
-    $di->getInstanceManager()->setProperty('My\DbAdapter', 'password', 'bar');
+    $di->getInstanceManager()->setParameters(
+        'My\DbAdapter',
+        array(
+            'username' => 'foo',
+            'password' => 'bar',
+        )
+    );
     $c = $di->get('My\RepositoryA');
     echo $c . PHP_EOL;
 }

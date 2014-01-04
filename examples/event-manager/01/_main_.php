@@ -1,8 +1,7 @@
 <?php
 
 function _main_() {
-    global $autoloader;
-    $autoloader->registerNamespace('Example', __DIR__);
+    simple_autoloader_register('Example', __DIR__);
     
     $ph = new Example\PluginHandler();
     $ph->register(new Example\MyPlugin());
