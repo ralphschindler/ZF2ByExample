@@ -5,11 +5,8 @@ function _main_() {
     
     $configValues = new Zend\Config\Ini(__DIR__ . '/di-config.ini', 'production');
     $diConfig = new Zend\Di\Configuration($configValues->di);
-    
-    
-    $di = new Zend\Di\DependencyInjector($diConfig);
-    
-    $im = $di->getInstanceManager();
+    $di = new Zend\Di\Di(null, null, $diConfig);
+    $im = $di->instanceManager();
     
     
     $c = $di->get('my-repository', array('dbAdapter' => 'my-dbAdapter'));
@@ -23,7 +20,6 @@ function _main_() {
     
     $f = $di->get('my-repository');
     echo $f . PHP_EOL . PHP_EOL;
-    
     
     
     echo 'Is it the same object (c && d): ';
